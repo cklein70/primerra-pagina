@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de Estudios Medicos 
+{% endblock %}
+
+
+
+{% block content %}
+
+    <h1>Hola desde el  listado de estudios Medicos  </h1>
+    <h2>Nuestros  estudios  </h2> <a href="/Medical_studies/studies_create/" class="btn btn-primary">ingresar Estudio</a>
+    <form action"" method "GET">
+        Estudio  a buscar: <input type="tex" name = "search"> 
+    <input type="submit"class="btn btn-primary" value=" search">
+    
+        
+  
+      </form>
+
+    {% for studies in Medical_Studies %}
+
+
+        <div class="card" style="width: 18rem;">
+            {% if studies.image != '' %}
+            <img src="{{studies.image.url}}" alt= "foto"class="card-img-top">
+            {% else %}
+             <img src="https://cdn-icons-png.flaticon.com/512/3481/3481061.png" class="card-img-top" >
+             {% endif %}
+            <div class="card-body">
+            <h5 class="card-title">{{studies.name}}</h5>
+            <p class="card-text">el estudio consiste en {{studies.Description }}</p>
+            <p class="card-text">Preparacion previa : {{studies.preparation }}</p>
+            <p class="card-text">Su coste es $ :{{studies.price}}</p>   
+
+            
+            <a href="/Medical_studies/studies_update/{{studies.id}}/" class="btn btn-primary"> Actualizar </a>
+            <a href="/Medical_studies/studies_delete/{{studies.id}}/" class="btn btn-danger"> borrar </a>
+            </div>
+        </div>
+
+
+
+    {% endfor %}
+
+{% endblock %}

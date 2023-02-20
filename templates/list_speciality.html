@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de Especialidades
+{% endblock %}
+
+
+
+{% block content %}
+
+    <h1> Listado de Especialidades  Medicas </h1>
+    <h2>  Centro  integral de Especialidades Medicas  </h2> <a href="/add_speciality/" class="btn btn-primary">ingresar Especialidad</a>
+    
+    <form action"" method "GET">
+            Especialiadad a buscar: <input type="tex" name = "buscar"> 
+        <input type="submit"class="btn btn-primary" value=" buscar">
+            
+      
+          </form>
+    {% for Speciality in Medical_Speciality %}
+     
+        
+        <div class="card" style="width: 18rem;">
+            {% if Speciality.mspicture != '' %}
+            <img src = "{{Speciality.mspicture.url}}" class="card-img-top" width="200px" height="250px >
+            {% else %}
+             <img src="https://cdn-icons-png.flaticon.com/512/3481/3481061.png" class="card-img-top" >
+             {% endif %}
+            <div class="card-body">
+            <h5 class="card-title">{{Speciality.Medical_Speciality}}</h5>
+            <p class="card-text">descripccion :{{Speciality.Description}}</p>
+              
+
+
+            <a href="/speciality_update/{{Speciality.id}}/" class="btn btn-primary"> Actualizar</a>
+            <a href="/speciality_delete/{{Speciality.id}}/" class="btn btn-danger"> Borrar </a>
+            </div>
+        </div>
+
+
+
+    {% endfor %}
+
+{% endblock %}

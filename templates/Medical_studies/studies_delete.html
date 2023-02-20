@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    confirmacion de borrado
+{% endblock %}
+
+{% block content %}
+
+    <h1>Estudio a borrar {{object.name}}</h1>
+    <h3>Seguro que desea eliminarlo?</h3>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Borrar">
+    </form>
+
+
+{% endblock %}

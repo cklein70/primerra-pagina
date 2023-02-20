@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de profesionales
+{% endblock %}
+
+
+
+{% block content %}
+
+    <h1>  Listado de profesionales Medicos  </h1>
+    <h2>Nuestros  profesionales </h2> <a href="/add_prof/" class="btn btn-primary">ingresar profesional</a>
+    <form action"" method "GET">
+        Profesional a buscar: <input type="tex" name = "search"> 
+    <input type="submit"class="btn btn-primary" value=" search">
+        
+  
+      </form>
+
+    {% for professional in Professionals %}
+
+
+        <div class="card" style="width: 18rem;">
+            {% if professional.picture != '' %}
+            
+                 <img src="{{professional.picture.url}}"class="card-img-top"width="200px" height="250px >
+            {% else %}
+                <img src="https://cdn-icons-png.flaticon.com/512/3481/3481061.png" class="card-img-top">
+            {% endif %}
+            <div class="card-body">
+            <h5 class="card-title"> Dr.{{professional.name }}</h5>
+            <p class="card-text">especialista en :{{professional.speciality }}</p>
+            <p class="card-text">su telefono es: :{{professional.telehone}} </p>
+            <p class="card-text">E Mail :{{professional.Email}}</p>   
+            
+
+            <a href="/professional_update/{{professional.id}}/" class="btn btn-primary"> Actualizar </a>
+            <a href="/professional_delete/{{professional.id}}/" class="btn btn-danger"> Borrar </a>
+            </div>
+        </div>
+
+
+
+    {% endfor %}
+
+{% endblock %}
